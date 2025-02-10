@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;  // 씬 관리를 위해 추가
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;       // 걷기 속도
-    public float jumpForce = 7f;       // 점프 힘
+    public float moveSpeed = 2f;       // 걷기 속도
+    public float jumpForce = 4f;       // 점프 힘
     private Rigidbody rb;              // Rigidbody 컴포넌트 참조
     private Animator animator;         // Animator 컴포넌트 참조
     private bool isGrounded = true;    // 플레이어가 땅에 있는지 여부
