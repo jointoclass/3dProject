@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform player;          // 따라갈 플레이어의 Transform
-    public Vector3 offset = new Vector3(0f, 10f, -10f);  // 플레이어와의 거리 (탑다운 뷰)
+    public Vector3 offset = new Vector3(0f, 4f, -4f);  // 플레이어와의 거리 (탑다운 뷰)
     public float smoothSpeed = 0.125f;  // 카메라 따라가는 속도 (부드러움 정도 조절)
 
     void LateUpdate()
