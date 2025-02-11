@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;          // 따라갈 플레이어의 Transform
+    public Transform player;          // 따라갈 플레이어의 Transform
     public Vector3 offset = new Vector3(0f, 4f, -4f);  // 플레이어와의 거리 (탑다운 뷰)
     public float smoothSpeed = 0.125f;  // 카메라 따라가는 속도 (부드러움 정도 조절)
 
@@ -12,11 +12,12 @@ public class CameraController : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            Debug.LogError("Player Transform이 할당되지 않았습니다!");
+            return;
         }
 
         // 목표 위치 계산 (플레이어 위치 + 오프셋)
-        Vector3 targetPosition = player.transform.position + offset;
+        Vector3 targetPosition = player.position + offset;
 
         // 현재 위치에서 목표 위치로 부드럽게 이동 (Lerp 사용)
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
@@ -25,6 +26,6 @@ public class CameraController : MonoBehaviour
         transform.position = smoothedPosition;
 
         // 플레이어를 항상 바라보도록 설정 (원하지 않으면 주석 처리 가능)
-        transform.LookAt(player.transform);
+        transform.LookAt(player);
     }
 }
