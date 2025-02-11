@@ -6,7 +6,7 @@ public class SpringController : MonoBehaviour
 {
     public SkinnedMeshRenderer springMeshRenderer;  // 스프링 메쉬의 SkinnedMeshRenderer
     private int stretchedBlendShapeIndex;           // 'Stretched' BlendShape 인덱스
-    public float stretchSpeed = 5f;                 // 늘어나는 속도
+    public float stretchSpeed = 20f;                 // 늘어나는 속도
     public float maxStretch = 100f;                 // 최대 블렌드셰이프 값 (완전 늘어난 상태)
     public float recoverySpeed = 2f;                // 원래 상태로 돌아오는 속도
 
