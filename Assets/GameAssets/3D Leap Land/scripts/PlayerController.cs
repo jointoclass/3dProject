@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
         movementInput = new Vector3(moveX, 0, moveZ).normalized;
 
-        HandleJump();
-        UpdateAnimations();
+        HandleJump(); // 점프 컨트롤
+        UpdateAnimations(); // 애니메이션 컨트롤
     }
 
     void FixedUpdate()
