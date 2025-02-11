@@ -15,7 +15,7 @@ public class BeeController : MonoBehaviour
     public float moveSpeed = 2f;      // 이동 속도
     private Vector3 startPosition;    // 시작 위치 저장
     private Vector3 targetPosition;   // 목표 위치 저장
-    private bool movingForward = true; // 이동 방향
+    private bool movingForward = true; // 이동 방향 (전방)
 
     void Start()
     {
