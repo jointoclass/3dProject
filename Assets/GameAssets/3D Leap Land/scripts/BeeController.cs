@@ -33,8 +33,8 @@ public class BeeController : MonoBehaviour
 
     void Update()
     {
-        AnimateBlendShape();
-        MoveBee();
+        AnimateBlendShape(); // 애니메이션 컨트롤
+        MoveBee(); // 이동 컨트롤
     }
 
     void AnimateBlendShape()

@@ -6,6 +6,7 @@ public class CannonController : MonoBehaviour
     public Transform firePoint;          // 포탄이 발사될 위치 (대포의 입구)
     public float fireForce = 500f;       // 포탄 발사 힘
     public float fireInterval = 2f;      // 발사 간격 (1초)
+    public float lifeTime = 2f;          // 탄환의 라이프타임
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class CannonController : MonoBehaviour
 
         // 180도 회전된 포탄 생성
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, rotation);
-        Destroy(projectile, 2f);
+        Destroy(projectile, lifeTime);
 
         // 포탄에 Rigidbody가 있는지 확인 후 force 적용
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
