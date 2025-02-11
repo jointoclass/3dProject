@@ -784,6 +784,7 @@ MonoBehaviour:
   player: {fileID: 2137961764}
   offset: {x: 0, y: 4, z: -4}
   smoothSpeed: 0.125
+  movementThreshold: 0.05
 --- !u!4 &127971289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6f459f98d501bd4f8a1a22c760c0e25,

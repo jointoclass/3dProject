@@ -6,7 +6,7 @@ public class BeeController : MonoBehaviour
 {
     public SkinnedMeshRenderer skinnedMeshRenderer; // Skinned Mesh Renderer를 할당합니다.
     private int flyBlendShapeIndex; // Fly 블렌드셰이프 인덱스 저장
-    public float animationSpeed = 50f; // 블렌드셰이프 애니메이션 속도 조절
+    public float animationSpeed = 200f; // 블렌드셰이프 애니메이션 속도 조절
 
     private float currentWeight = 0f;
     private bool increasing = true;
