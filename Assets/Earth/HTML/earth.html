@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity WebGL Loader</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #20232a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        #unity-container {
+            width: 960px;
+            height: 600px;
+            background: #000;
+            position: relative;
+        }
+
+        #loading-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #444;
+            position: absolute;
+            bottom: 0;
+        }
+
+        #loading-bar-progress {
+            width: 0;
+            height: 100%;
+            background-color: #61dafb;
+        }
+
+        #loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="unity-container">
+        <div id="loading-bar">
+            <div id="loading-bar-progress"></div>
+        </div>
+        <div id="loading-text">Loading...</div>
+        <canvas id="unity-canvas" style="width: 100%; height: 100%; display: none;"></canvas>
+    </div>
+    <button id="changeColorBtn">Change Cube Color to Blue</button>
+
+    <script>
+        // Unity 빌드 파일 경로 설정 (빌드 폴더명: Build)
+        const buildUrl = "Build";
+        const loaderUrl = buildUrl + "/Build.loader.js";
+        const config = {
+            dataUrl: buildUrl + "/Build.data",
+            frameworkUrl: buildUrl + "/Build.framework.js",
+            codeUrl: buildUrl + "/Build.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "YourCompany",
+            productName: "YourProduct",
+            productVersion: "1.0",
+        };
+
+        const canvas = document.getElementById("unity-canvas");
+        const loadingBar = document.getElementById("loading-bar-progress");
+        const loadingText = document.getElementById("loading-text");
+
+        // UnityLoader 스크립트 동적으로 로드
+        const script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                loadingBar.style.width = (progress * 100) + "%";
+                loadingText.textContent = `Loading... ${(progress * 100).toFixed(0)}%`;
+            }).then((unityInstance) => {
+                loadingText.style.display = "none";
+                canvas.style.display = "block";
+                // 버튼 클릭 시 유니티 함수 호출
+                document.getElementById("changeColorBtn").addEventListener("click", () => {
+                    unityInstance.SendMessage('MyCube', 'ChangeColor', 'blue');
+                });
+            }).catch((message) => {
+                alert("Failed to load Unity: " + message);
+            });
+        };
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
