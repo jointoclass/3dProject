@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // 씬 관리를 위해 추가
 
+#if !TANK
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 2f;       // 걷기 속도
@@ -158,3 +159,4 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
+#endif
