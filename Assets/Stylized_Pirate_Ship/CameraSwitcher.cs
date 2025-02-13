@@ -5,8 +5,9 @@ public class CameraSwitcher : MonoBehaviour
 {
     public Camera camera1;
     public Camera camera2;
-    public float transitionSpeed = 2.0f; // Ä«¸Þ¶ó ÀÌµ¿ ¼Óµµ
+    public float transitionSpeed = 2.0f; // Ä«ï¿½Þ¶ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½
     public GameObject character;
+    public GameObject baloon;
 
     private static bool isSwitching = false;
     private Camera activeCamera;
@@ -14,7 +15,7 @@ public class CameraSwitcher : MonoBehaviour
 
     void Start()
     {
-        // ÃÊ±â È°¼ºÈ­ ¼³Á¤
+        // ï¿½Ê±ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
         activeCamera = camera1;
         camera1.enabled = true;
         camera2.enabled = false;
@@ -24,10 +25,16 @@ public class CameraSwitcher : MonoBehaviour
 
     void Update()
     {
-        // ½ºÆäÀÌ½º Å°¸¦ ´©¸£¸é Ä«¸Þ¶ó ÀüÈ¯ ½ÃÀÛ
-        if (Input.GetKeyDown(KeyCode.Space) && !isSwitching)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½
+        if (Input.GetMouseButtonDown(0) && activeCamera == camera1 && !isSwitching)
         {
-            StartCoroutine(SmoothSwitchCamera());
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == baloon)
+            {
+                StartCoroutine(SmoothSwitchCamera());
+            }
         }
         if (!isSwitching && activeCamera == camera2 && Input.GetMouseButton(0))
         {
@@ -54,7 +61,7 @@ public class CameraSwitcher : MonoBehaviour
         Vector3 targetPosition = newCamera.transform.position;
         Quaternion targetRotation = newCamera.transform.rotation;
 
-        // »õ Ä«¸Þ¶óÀÇ À§Ä¡¸¦ ¸ÕÀú ¿ø·¡ Ä«¸Þ¶ó À§Ä¡·Î ¸ÂÃá´Ù.
+        // ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
         newCamera.transform.position = startPosition;
         newCamera.transform.rotation = startRotation;
         newCamera.enabled = true;
@@ -69,7 +76,7 @@ public class CameraSwitcher : MonoBehaviour
             yield return null;
         }
 
-        // ÀüÈ¯ ¿Ï·á ÈÄ ÀÌÀü Ä«¸Þ¶ó ºñÈ°¼ºÈ­
+        // ï¿½ï¿½È¯ ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
         oldCamera.enabled = false;
         activeCamera = newCamera;
         isSwitching = false;
