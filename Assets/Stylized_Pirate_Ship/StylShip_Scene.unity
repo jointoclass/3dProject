@@ -582,6 +582,7 @@ MonoBehaviour:
   camera1: {fileID: 963194227}
   camera2: {fileID: 813206830}
   transitionSpeed: 2
+  character: {fileID: 2006066556}
 --- !u!1001 &977259768
 PrefabInstance:
   m_ObjectHideFlags: 0
