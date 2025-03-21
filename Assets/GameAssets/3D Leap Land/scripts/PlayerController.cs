@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponentInChildren<Rigidbody>();       // Rigidbody 컴포넌트 가져오기
+        rb = GetComponent<Rigidbody>();       // Rigidbody 컴포넌트 가져오기
         animator = GetComponentInChildren<Animator>();  // Animator 컴포넌트 가져오기
 
         if (rb == null)
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     void MovePlayer()
     {
         Vector3 movement = movementInput * moveSpeed;
-        Vector3 newPosition = rb.position + movement * Time.fixedDeltaTime;
+        Vector3 newPosition = rb.position + (movement * Time.fixedDeltaTime);
 
         rb.MovePosition(newPosition);
 
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         isTrophy = true;
         PlayAnimation("Trophy");
         rb.velocity = Vector3.zero;  // 움직임 정지
-        StartCoroutine(RestartSceneAfterDelay(1.5f));  // 3초 후 씬 재시작
+        StartCoroutine(RestartSceneAfterDelay(4f));  // 3초 후 씬 재시작
     }
 
     // 3초 후 씬 재시작 코루틴
