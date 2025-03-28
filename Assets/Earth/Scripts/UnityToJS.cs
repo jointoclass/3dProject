@@ -6,7 +6,7 @@ public class UnityToJS : MonoBehaviour
 {
     // 자바스크립트 함수 연결
     [DllImport("__Internal")]
-    private static extern void showAlert(string message);
+    private static extern void showAlert(string message); //showAlert 애가 함수라서 중괄호가 필요없음, 우리가 직접 윈도우에 추가 해야한다
 
     void Start()
     {

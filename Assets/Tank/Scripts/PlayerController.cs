@@ -6,7 +6,7 @@ using UnityEngine.AI;
 #if TANK
 public class PlayerController : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    private NavMeshAgent agent; //NavMeshAgent 길찾기 라이브러리    
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // 0은 좌클릭, 1은 우클릭, 2는 스크롤버튼
         {
             MoveToClickPoint();
         }
