@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
     }
 
     void Update()

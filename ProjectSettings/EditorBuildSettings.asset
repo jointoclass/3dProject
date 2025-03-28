@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Scene1.unity
-    guid: be82a2a67d167e44ea5130ee6bc8d644
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/KayKit_Adventurers.unity
-    guid: e627df496a3f1e545997b1e3f0dd982e
+    path: Assets/Earth/EarthScene.unity
+    guid: e3523ca6db1f20c458e410e2aba84ee8
   m_configObjects: {}
